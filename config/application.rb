@@ -24,6 +24,19 @@ module EsportsApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+
+    config.i18n.default_locale = :ja
+
+    config.generators do |g|
+      g.assets false
+      g.stylesheets false             
+      g.skip_routes true        
+      g.helper false             
+      g.test_framework :false
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
