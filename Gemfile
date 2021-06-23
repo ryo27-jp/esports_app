@@ -40,6 +40,11 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'webdrivers'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
