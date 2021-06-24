@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
-
+RSpec.describe 'Users', type: :system do
   describe 'ログイン' do
     before(:all) do
       @user = create(:user)
@@ -25,7 +24,6 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content 'Eメールまたはパスワードが違います。'
     end
   end
-
 
   describe 'サインイン' do
     it 'アカウント作成できる' do
