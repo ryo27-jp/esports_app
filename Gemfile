@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'devise-i18n'
 
+gem "aws-sdk-s3"
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
@@ -44,6 +47,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'webdrivers'
+  gem 'dotenv-rails'
 end
 
 group :development do
