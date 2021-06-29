@@ -9,6 +9,10 @@
         <%= Team.human_attribute_name(:about) %>
         <%= @team.about%>
       </div>
+      <div>
+        <%= link_to "削除", team_path, method: :delete %>
+        <%= link_to "編集", edit_team_path %>
+      </div>
     </div>
   </div>
 </div>
