@@ -1,5 +1,6 @@
 class Team < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
-
   has_one_attached :image
+  has_many :divisions, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: true
 end
