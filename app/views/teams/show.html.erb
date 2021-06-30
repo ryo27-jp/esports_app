@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 offset-sm-3 col-12">
+      <% if @team.image.attached? %>
         <%= image_tag url_for(@team.image) %>
+      <% end %>
       <div>
         <%= Team.human_attribute_name(:name) %>
         <%= @team.name%>
@@ -12,6 +14,12 @@
       <div>
         <%= link_to "削除", team_path, method: :delete %>
         <%= link_to "編集", edit_team_path %>
+        <%= link_to "チーム新規登録", new_team_division_path(@team) %>
+        <% if @team.divisions.present? %>
+          <% @team.divisions.each do |division| %>
+            <%= link_to "#{division.name}", division_path(division) %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
