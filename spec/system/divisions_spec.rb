@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Divisions", type: :system do
+RSpec.describe 'Divisions', type: :system do
   let(:team) { create(:team, name: 'テスト') }
-  
+
   describe '作成できない' do
-    let!(:division){create(:division)}
- 
+    let!(:division) { create(:division) }
+
     it '部門名がなければ登録できない' do
       visit new_team_division_path(team)
       fill_in '部門名', with: ''
