@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :division do
-    name { "MyString" }
-    description { "MyString" }
-    team { nil }
+    name { 'test部門' }
+    description { '部門について書くところです。' }
+    team
   end
 end
