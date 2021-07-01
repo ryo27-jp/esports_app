@@ -1,6 +1,6 @@
-class Team < ApplicationRecord
+class Division < ApplicationRecord
+  belongs_to :team
   has_one_attached :image
-  has_many :divisions, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 end

@@ -1,5 +1,6 @@
 <% if @teams.blank? %>
   <p>何もない</p>
+  <%= link_to "新規登録", new_team_path, class:"" %>
 <% else %>
   <% @teams.each do |team| %>
     <ul>
@@ -7,5 +8,7 @@
         <%= link_to team.name, team_path(team.id), class:"" %>
       </li>
     </ul>
+    
   <% end %>
+  <%= link_to "新規登録", new_team_path, class:"" %>
 <% end %>
