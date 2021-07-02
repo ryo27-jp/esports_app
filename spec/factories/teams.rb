@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :team do
-    name { 'testチーム' }
+    name { Faker::Book.title }
     about { 'チームについて書くところです。' }
   end
 end

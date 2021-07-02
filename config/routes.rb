@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :teams do
-    resources :divisions, except: [:index], shallow: true
+    resources :divisions, except: [:index], shallow: true do
+      resources :members, except: [:index], shallow: true
+    end
   end
 
   root to: 'home#index'

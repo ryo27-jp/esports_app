@@ -14,7 +14,7 @@
       <div>
         <%= link_to "削除", team_path, method: :delete %>
         <%= link_to "編集", edit_team_path %>
-        <%= link_to "チーム新規登録", new_team_division_path(@team) %>
+        <%= link_to "部門新規登録", new_team_division_path(@team) %>
         <% if @team.divisions.present? %>
           <% @team.divisions.each do |division| %>
             <%= link_to "#{division.name}", division_path(division) %>

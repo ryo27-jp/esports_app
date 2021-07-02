@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3 col-12">
+      <% if @member.image.attached? %>
+        <%= image_tag url_for(@member.image) %>
+      <% end %>
+      <div>
+        <%= Member.human_attribute_name(:name) %>
+        <%= @member.name%>
+      </div>
+      <div>
+        <%= Member.human_attribute_name(:biography) %>
+        <%= @member.biography%>
+      </div>
+      <div>
+        <%= Member.human_attribute_name(:url) %>
+        <%= @member.url %>
+      </div>
+      <div>
+        <%= link_to "削除", member_path, method: :delete %>
+        <%= link_to "編集", edit_member_path %>
+      </div>
+    </div>
+  </div>
+</div>
