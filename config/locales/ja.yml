@@ -13,6 +13,10 @@ ja:
       division:
         name: '部門名'
         description: '部門概要'
+      member:
+        name: '名前'
+        url: SNS
+        biography: '略歴'
   date:
     abbr_day_names:
     - 日

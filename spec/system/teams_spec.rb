@@ -17,6 +17,7 @@ RSpec.describe 'Teams', type: :system do
     end
 
     it 'チーム名はユニークである事' do
+      create(:team, name: "testチーム")
       visit new_team_path
       fill_in 'チーム名', with: 'testチーム'
       fill_in 'チーム概要', with: '作れるんです'
