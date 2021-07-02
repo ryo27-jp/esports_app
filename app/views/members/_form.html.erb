@@ -1,0 +1,25 @@
+<%= form_with model: [division, member], local: true do |f| %>
+  <%= render 'shared/error_messages', object: member %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true, class:"form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :url %>
+      <%= f.text_area :url, class:"form-control" %>
+    </div>
+
+    <div>
+      <%= f.label :biography %>
+      <%= f.text_area :biography, class:"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.file_field :image, class:"form-control"%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class:"btn btn-primary my-2" %>
+    </div>
+<% end %>

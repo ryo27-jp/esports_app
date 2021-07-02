@@ -15,6 +15,12 @@
       <div>
         <%= link_to "削除", division_path, method: :delete %>
         <%= link_to "編集", edit_division_path %>
+        <%= link_to "メンバー新規登録", new_division_member_path(@division) %>
+        <% if @division.members.present? %>
+          <% @division.members.each do |member| %>
+            <%= link_to "#{member.name}", member_path(member) %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
