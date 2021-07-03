@@ -1,32 +1,30 @@
 crumb :root do
-  link "Home", root_path
+  link 'Home', root_path
 end
 
 crumb :teams do
-  link "チーム一覧", teams_path
+  link 'チーム一覧', teams_path
   parent :root
 end
 
 crumb :team do |team|
   if team.present?
-    link team.name, team_path(team)
-  elsif controller_name == "divisions"
+  elsif controller_name == 'divisions'
     team = Division.find(params[:id]).team
-    link team.name, team_path(team)
-  else controller_name == "members"
+  else
+    controller_name == 'members'
     team = Member.find(params[:id]).division.team
-    link team.name, team_path(team)
   end
+  link team.name, team_path(team)
   parent :teams
 end
 
 crumb :division do |division|
   if division.present?
-    link division.name, division_path(division)
   else
     division = Member.find(params[:id]).division
-    link division.name, division_path(division)
   end
+  link division.name, division_path(division)
   parent :team
 end
 
