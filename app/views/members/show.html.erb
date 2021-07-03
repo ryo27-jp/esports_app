@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 offset-sm-3 col-12">
+      <div>
+        <% breadcrumb :member, @member %>
+      </div>
       <% if @member.image.attached? %>
         <%= image_tag url_for(@member.image) %>
       <% end %>

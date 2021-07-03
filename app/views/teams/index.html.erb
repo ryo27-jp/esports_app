@@ -1,3 +1,5 @@
+<% breadcrumb :teams, @teams %>
+
 <% if @teams.blank? %>
   <p>何もない</p>
   <%= link_to "新規登録", new_team_path, class:"" %>
