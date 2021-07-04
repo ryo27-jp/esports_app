@@ -35,6 +35,7 @@ gem 'rails-i18n'
 gem 'aws-sdk-s3'
 
 gem 'gretel'
+gem 'pagy'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
