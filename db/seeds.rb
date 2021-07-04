@@ -8,12 +8,11 @@
   )
 
   division = Division.create(name: Faker::Sports::Football.team,
-                  description: Faker::Sports::Football.coach,
-                  team_id: team.id  )
+                             description: Faker::Sports::Football.coach,
+                             team_id: team.id)
 
   Member.create(name: Faker::Music::Hiphop.artist,
                 url: "https://google.com/#{n}",
                 biography: Faker::Music::Hiphop.subgenres,
-                division_id: division.id  )
-                
+                division_id: division.id)
 end
