@@ -19,11 +19,12 @@
     <%= render "shared/flash" %>
       <div class="container">
         <div class="row">
-          <div class="col-12 p-4">
+          <div class="col-12">
             <%= breadcrumbs separator: " &rsaquo; " %>
             <%= yield %>
           </div>
         </div>
       </div>
+      <%= render "shared/footer" %>
   </body>
 </html>
