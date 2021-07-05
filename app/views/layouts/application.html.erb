@@ -10,21 +10,15 @@
     <%= javascript_pack_tag 'application'%>
   </head>
 
-  <body>
+  <body class="bg-s-white">
     <% if user_signed_in?%>
       <%= render "shared/header" %>
     <% else %>
       <%= render "shared/before_login_header" %>
     <% end %>
     <%= render "shared/flash" %>
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <%= breadcrumbs separator: " &rsaquo; " %>
-            <%= yield %>
-          </div>
-        </div>
-      </div>
-      <%= render "shared/footer" %>
+    <%= breadcrumbs separator: " &rsaquo; " %>
+    <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>
