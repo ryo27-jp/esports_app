@@ -5,7 +5,7 @@
         <% breadcrumb :member, @member %>
       </div>
       <% if @member.image.attached? %>
-        <%= image_tag url_for(@member.image) %>
+        <%= image_tag @member.image, size:'640x420' %>
       <% end %>
       <div>
         <%= Member.human_attribute_name(:name) %>

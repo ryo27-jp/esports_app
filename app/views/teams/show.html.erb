@@ -5,24 +5,39 @@
         <% breadcrumb :team, @team %>
       </div>
       <% if @team.image.attached? %>
-        <%= image_tag url_for(@team.image) %>
+        <%= image_tag @team.image,size:'640x420' %>
       <% end %>
       <div>
         <%= Team.human_attribute_name(:name) %>
         <%= @team.name%>
       </div>
+      <div>
         <%= Team.human_attribute_name(:about) %>
         <%= @team.about%>
+      </div>
+      <p class="headline-large mt-4">Division</p>
+      <div class="row mt-4">
+        <% if @team.divisions.present? %>
+          <% @team.divisions.each do |division| %>
+            <div class="col-12 col-md-4">
+              <%= link_to division_path(division), class:"card mb-4 text-decoration-none border-0 " do %>
+                <% if division.image.attached? %>
+                    <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(division.image) %>')"></div>
+                <% else %>
+                  <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
+                <% end %>
+                <div class="card-body bg-s-white">
+                  <p class="card-text text-s-gray">チーム名: <%= division.name %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       <div>
         <%= link_to "削除", team_path, method: :delete %>
         <%= link_to "編集", edit_team_path %>
         <%= link_to "部門新規登録", new_team_division_path(@team) %>
-        <% if @team.divisions.present? %>
-          <% @team.divisions.each do |division| %>
-            <%= link_to "#{division.name}", division_path(division) %>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>

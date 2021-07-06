@@ -33,6 +33,7 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 
 gem 'aws-sdk-s3'
+gem 'mini_magick'
 
 gem 'gretel'
 gem 'pagy'

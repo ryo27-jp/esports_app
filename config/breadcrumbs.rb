@@ -1,10 +1,7 @@
-crumb :root do
-  link 'Home', root_path
-end
 
-crumb :teams do
+
+crumb :root do
   link 'チーム一覧', teams_path
-  parent :root
 end
 
 crumb :team do |team|
@@ -16,7 +13,7 @@ crumb :team do |team|
     team = Member.find(params[:id]).division.team
   end
   link team.name, team_path(team)
-  parent :teams
+  parent :root
 end
 
 crumb :division do |division|

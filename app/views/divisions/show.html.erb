@@ -1,29 +1,43 @@
-<h1>Divisions#show</h1>
 <div class="container">
   <div class="row">
     <div class="col-sm-6 offset-sm-3 col-12">
       <div>
-        <% breadcrumb :division, @division %>
+        <% breadcrumb :team, @division %>
       </div>
       <% if @division.image.attached? %>
-        <%= image_tag url_for(@division.image) %>
+        <%= image_tag @division.image,size:'640x420' %>
       <% end %>
       <div>
         <%= Division.human_attribute_name(:name) %>
         <%= @division.name%>
       </div>
+      <div>
         <%= Division.human_attribute_name(:description) %>
         <%= @division.description %>
+      </div>
+      <p class="headline-large mt-4">MEMBER</p>
+      <div class="row mt-4">
+        <% if @division.members.present? %>
+          <% @division.members.each do |member| %>
+            <div class="col-12 col-md-4">
+              <%= link_to member_path(member), class:"card mb-4 text-decoration-none border-0 " do %>
+                <% if member.image.attached? %>
+                    <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(member.image) %>')"></div>
+                <% else %>
+                  <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
+                <% end %>
+                <div class="card-body bg-s-white">
+                  <p class="card-text text-s-gray"><%= member.name %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       <div>
         <%= link_to "削除", division_path, method: :delete %>
         <%= link_to "編集", edit_division_path %>
         <%= link_to "メンバー新規登録", new_division_member_path(@division) %>
-        <% if @division.members.present? %>
-          <% @division.members.each do |member| %>
-            <%= link_to "#{member.name}", member_path(member) %>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>
