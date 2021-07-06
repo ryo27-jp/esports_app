@@ -6,7 +6,7 @@
 import '@fortawesome/fontawesome-free/js/all'
 import 'bootstrap'
 import 'jquery'
-import '../stylesheets/application'
+import "packs/application.scss";
 
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
@@ -15,3 +15,6 @@ import "channels"
 
 Rails.start()
 ActiveStorage.start()
+
+const images = require.context('../images', true)
+const imagePath = (name) => images(name, true)

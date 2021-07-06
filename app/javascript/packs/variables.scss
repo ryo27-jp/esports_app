@@ -1,0 +1,41 @@
+$colors: (
+  'red': #B3241D,
+  'light-green': #44C7AA,
+  'snow-white': #f0f0f0,
+  'black': #072044,
+  'gray': #777777,
+  'slate-gray': #615d5d,
+  'pale-gray': #eeeeee,
+  'blue-gray': #e4f4f3,
+);
+
+// 文字色
+.text-s-gray {
+  color: map-get($colors, "slate-gray") !important;
+}
+.text-b-gray{
+  color: map-get($colors, "blue-gray") !important;
+}
+
+// 背景色
+.bg-s-gray {
+  background-color: map-get($colors, "slate-gray")
+}
+.bg-s-white {
+  background-color: map-get($colors, "snow-white")
+}
+
+// 画像サイズ
+.team-img{
+  width: 100%;
+  padding-top: 80%;
+  background-position: center center;
+  background-size: cover;
+}
+
+// 見出し
+.headline-large {
+  letter-spacing: 0.1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
