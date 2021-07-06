@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   include Pagy::Backend
   def index
-    @pagy, @teams = pagy(Team.all)
+    @pagy, @teams = pagy(Team.all, items: 6)
   end
 
   def show
