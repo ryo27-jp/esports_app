@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_111909) do
+ActiveRecord::Schema.define(version: 2021_07_06_121355) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2021_07_06_111909) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_divisions_on_name", unique: true
     t.index ["team_id"], name: "index_divisions_on_team_id"
+  end
+
+  create_table "divisions_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "division_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["division_id"], name: "index_divisions_tags_on_division_id"
+    t.index ["tag_id"], name: "index_divisions_tags_on_tag_id"
   end
 
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -89,5 +98,7 @@ ActiveRecord::Schema.define(version: 2021_07_06_111909) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "divisions", "teams"
+  add_foreign_key "divisions_tags", "divisions"
+  add_foreign_key "divisions_tags", "tags"
   add_foreign_key "members", "divisions"
 end

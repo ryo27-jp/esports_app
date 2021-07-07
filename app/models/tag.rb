@@ -1,3 +1,6 @@
 class Tag < ApplicationRecord
-  validates: :title, presence: true
+  has_many :divisions_tags
+  has_many :divisions, through: :divisions_tags
+  
+  validates :title, presence: true
 end
