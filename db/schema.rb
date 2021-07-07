@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 2021_07_07_004114) do
 
   create_table "members_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "member_id", null: false
-    t.bigint "tags_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_members_tags_on_member_id"
-    t.index ["tags_id"], name: "index_members_tags_on_tags_id"
+    t.index ["tag_id"], name: "index_members_tags_on_tag_id"
   end
 
   create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -111,5 +111,5 @@ ActiveRecord::Schema.define(version: 2021_07_07_004114) do
   add_foreign_key "divisions_tags", "tags"
   add_foreign_key "members", "divisions"
   add_foreign_key "members_tags", "members"
-  add_foreign_key "members_tags", "tags", column: "tags_id"
+  add_foreign_key "members_tags", "tags"
 end
