@@ -6,6 +6,7 @@ class DivisionsController < ApplicationController
   def new
     @team = Team.find(params[:team_id])
     @division = Division.new
+    @tags = Tag.all
   end
 
   def create
@@ -22,6 +23,7 @@ class DivisionsController < ApplicationController
 
   def edit
     @division = Division.find(params[:id])
+    @tags = Tag.all
   end
 
   def update
