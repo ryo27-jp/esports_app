@@ -6,9 +6,9 @@ class MakeDivisionForm
   attribute :description, :string
   attr_accessor :tag_ids
 
-  def initialize(team, params = {}, division:'')
+  def initialize(team, params = {}, division: '')
     @division ||= Division.new
-    @division.assign_attributes({team: team, name: params[:name], description: params[:description]})
+    @division.assign_attributes({ team: team, name: params[:name], description: params[:description] })
     super(params)
   end
 

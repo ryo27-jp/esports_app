@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'members', type: :system do
   let(:division) { create(:division, name: 'テスト') }
-  
+
   describe '作成できない' do
     let!(:member) { create(:member) }
 

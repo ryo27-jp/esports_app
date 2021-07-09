@@ -45,6 +45,6 @@ class DivisionsController < ApplicationController
   private
 
   def division_params
-    params.require(:division).permit(:name, :description, :image, :team_id, tag_ids:[])
+    params.require(:division).permit(:name, :description, :image, :team_id, tag_ids: [])
   end
 end

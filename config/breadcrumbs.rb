@@ -1,5 +1,3 @@
-
-
 crumb :root do
   link 'チーム一覧', teams_path
 end
