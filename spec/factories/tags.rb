@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tag do
-    title { "MyText" }
+    title { Faker::Games::LeagueOfLegends.summoner_spell  }
   end
 end
