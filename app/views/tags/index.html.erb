@@ -1,0 +1,15 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col-12">
+      <% @tags.each do |tag| %>
+        <ul class="list-unstyled">
+          <li>
+            <%= tag.title %>
+            <%= link_to "編集", edit_tag_path(tag), class:"btn btn-primary" %>
+            <%= link_to "削除", tag_path(tag), class:"btn btn-primary", method: :delete %>
+          </li>
+        </ul>
+        <% end %>
+    </div>
+  </div>
+</div>

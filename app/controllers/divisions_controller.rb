@@ -5,16 +5,15 @@ class DivisionsController < ApplicationController
 
   def new
     @team = Team.find(params[:team_id])
-    @division = Division.new
-    @tags = Tag.all
+    @division_form = MakeDivisionForm.new(@team, division: Division.new)
   end
 
   def create
-    @team = Team.find(params[:team_id])
-    @division = @team.divisions.new(division_params)
+    team = Team.find(params[:team_id])
+    @division = MakeDivisionForm.new(team,division_params, division: Division.new)
 
-    if @division.save
-      redirect_to division_path(@division), success: '登録しました。'
+    if @division.save!
+      redirect_to teams_path, success: '登録しました。'
     else
       flash.now[:danger] = '登録に失敗しました。'
       render :new
@@ -23,7 +22,6 @@ class DivisionsController < ApplicationController
 
   def edit
     @division = Division.find(params[:id])
-    @tags = Tag.all
   end
 
   def update
@@ -47,6 +45,6 @@ class DivisionsController < ApplicationController
   private
 
   def division_params
-    params.require(:division).permit(:name, :description, :image)
+    params.require(:division).permit(:name, :description, :image, :team_id, tag_ids:[])
   end
 end
