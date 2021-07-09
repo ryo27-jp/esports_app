@@ -6,12 +6,10 @@ class DivisionsController < ApplicationController
   def new
     @team = Team.find(params[:team_id])
     @division = Division.new
-    # @division_form = MakeDivisionForm.new(@team, division: Division.new)
   end
 
   def create
     team = Team.find(params[:team_id])
-    # @division = MakeDivisionForm.new(team,division_params, division: Division.new)
     @division = team.divisions.create(division_params)
 
     if @division.save!
