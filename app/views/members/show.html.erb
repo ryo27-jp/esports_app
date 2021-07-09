@@ -20,6 +20,12 @@
         <%= @member.url %>
       </div>
       <div>
+        <span>タグ</span>
+        <% @member.tags.each do |tag| %>
+          <span class="badge rounded-pill bg-success"><%= tag.title %></span>
+        <% end %>
+      </div>
+      <div>
         <%= link_to "削除", member_path, method: :delete %>
         <%= link_to "編集", edit_member_path %>
       </div>

@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Breadcrumbs', type: :system do
   describe '正しい' do
     let!(:member) { create(:member) }
-    it 'パンくずが正しく表示されている事' do
-      visit teams_path
-      expect(find('.current')).to have_content 'チーム一覧'
-    end
 
     it 'チーム名がパンくずに表示されている事' do
       visit team_path(member.division.team)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_701_033_603) do
+ActiveRecord::Schema.define(version: 20_210_707_004_114) do
   create_table 'active_storage_attachments', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'record_type', null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20_210_701_033_603) do
     t.index ['team_id'], name: 'index_divisions_on_team_id'
   end
 
+  create_table 'divisions_tags', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.bigint 'division_id', null: false
+    t.bigint 'tag_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['division_id'], name: 'index_divisions_tags_on_division_id'
+    t.index ['tag_id'], name: 'index_divisions_tags_on_tag_id'
+  end
+
   create_table 'members', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'url'
@@ -59,6 +68,21 @@ ActiveRecord::Schema.define(version: 20_210_701_033_603) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index ['division_id'], name: 'index_members_on_division_id'
+  end
+
+  create_table 'members_tags', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.bigint 'member_id', null: false
+    t.bigint 'tag_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['member_id'], name: 'index_members_tags_on_member_id'
+    t.index ['tag_id'], name: 'index_members_tags_on_tag_id'
+  end
+
+  create_table 'tags', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.text 'title', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
   create_table 'teams', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
@@ -84,5 +108,9 @@ ActiveRecord::Schema.define(version: 20_210_701_033_603) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'divisions', 'teams'
+  add_foreign_key 'divisions_tags', 'divisions'
+  add_foreign_key 'divisions_tags', 'tags'
   add_foreign_key 'members', 'divisions'
+  add_foreign_key 'members_tags', 'members'
+  add_foreign_key 'members_tags', 'tags'
 end

@@ -15,6 +15,12 @@
         <%= Division.human_attribute_name(:description) %>
         <%= @division.description %>
       </div>
+      <div>
+        <span>タグ</span>
+        <% @division.tags.each do |tag| %>
+          <span class="badge rounded-pill bg-success"><%= tag.title %></span>
+        <% end %>
+      </div>
       <p class="headline-large mt-4">MEMBER</p>
       <div class="row mt-4">
         <% if @division.members.present? %>

@@ -28,11 +28,13 @@ RSpec.describe 'Divisions', type: :system do
   end
 
   describe '作成出来る' do
+    let!(:tag) { create(:tag) }
     it 'divisionが作成出来る事' do
       visit new_team_division_path(team)
       fill_in '部門名', with: 'これは作れる'
       fill_in '部門概要', with: '作れるんです'
       attach_file 'division[image]', 'db/fixtures/犬.jpg'
+      check 'member_tag_ids_1'
       click_button '登録する'
 
       expect(page).to have_content '登録しました。'

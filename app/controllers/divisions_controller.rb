@@ -9,11 +9,11 @@ class DivisionsController < ApplicationController
   end
 
   def create
-    @team = Team.find(params[:team_id])
-    @division = @team.divisions.new(division_params)
+    team = Team.find(params[:team_id])
+    @division = team.divisions.create(division_params)
 
-    if @division.save
-      redirect_to division_path(@division), success: '登録しました。'
+    if @division.save!
+      redirect_to teams_path, success: '登録しました。'
     else
       flash.now[:danger] = '登録に失敗しました。'
       render :new
@@ -45,6 +45,6 @@ class DivisionsController < ApplicationController
   private
 
   def division_params
-    params.require(:division).permit(:name, :description, :image)
+    params.require(:division).permit(:name, :description, :image, :team_id, tag_ids: [])
   end
 end
