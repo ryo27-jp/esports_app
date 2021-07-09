@@ -1,25 +1,37 @@
-<%= form_with model: [division, member], local: true do |f| %>
-  <%= render 'shared/error_messages', object: member %>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true, class:"form-control" %>
-    </div>
+<div class="container p-5">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3 col-12">
+      <%= form_with model: [division, member], local: true do |f| %>
+        <%= render 'shared/error_messages', object: member %>
+          <div>
+            <%= f.label :name %>
+            <%= f.text_field :name, autofocus: true, class:"form-control" %>
+          </div>
 
-    <div>
-      <%= f.label :url %>
-      <%= f.text_area :url, class:"form-control" %>
-    </div>
+          <div>
+            <%= f.label :url %>
+            <%= f.text_area :url, class:"form-control" %>
+          </div>
 
-    <div>
-      <%= f.label :biography %>
-      <%= f.text_area :biography, class:"form-control" %>
-    </div>
+          <div>
+            <%= f.label :biography %>
+            <%= f.text_area :biography, class:"form-control" %>
+          </div>
 
-    <div class="field">
-      <%= f.file_field :image, class:"form-control"%>
-    </div>
+          <div class="field">
+            <%= f.file_field :image, class:"form-control"%>
+          </div>
 
-    <div class="actions">
-      <%= f.submit class:"btn btn-primary my-2" %>
+          <div class="mb-3">
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title,include_hidden: false) do |b| %>
+              <%= b.label { b.check_box + b.text } %>
+            <% end %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit class:"btn btn-primary my-2" %>
+          </div>
+      <% end %>
     </div>
-<% end %>
+  </div>
+</div>
