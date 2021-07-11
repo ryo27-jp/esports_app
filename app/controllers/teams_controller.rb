@@ -2,6 +2,9 @@ class TeamsController < ApplicationController
   include Pagy::Backend
   def index
     @pagy, @teams = pagy(Team.all, items: 6)
+    @search_form = SearchForm.new(search_params)
+    @result = @search_form.search
+    binding.pry
   end
 
   def show
@@ -49,5 +52,9 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name, :about, :image)
+  end
+
+  def search_params
+    params.require(:search_form).permit(:name)
   end
 end
