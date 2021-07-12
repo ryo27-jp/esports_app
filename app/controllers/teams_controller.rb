@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
 
   def search
     @search_form = SearchForm.new(search_params)
-    @pagy ,@result = pagy(@search_form.search, items: 6)
+    @pagy, @result = pagy(@search_form.search, items: 6)
   end
 
   def show
