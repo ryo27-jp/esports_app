@@ -1,35 +1,5 @@
 
 <%= image_pack_tag 'mv_1.jpg', class:"d-block w-100", style: "height:30rem" %>
-<div >
-  <%= form_with model: @search_form, url: teams_path, method: :get do |f| %>
-
-    <%= f.text_field :name %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div> 
-    <% if @result.blank? %>
-      <p>何もない</p>
-      <%= link_to "新規登録", new_team_path, class:"" %>
-    <% else %>
-      <% @result.each do |team| %>
-        <div class="col-12 col-md-4">
-          <%= link_to team_path(team), class:"card mb-4 text-decoration-none border-0 " do %>
-            <% if team.image.attached? %>
-               <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(team.image) %>')"></div>
-            <% else %>
-              <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
-            <% end %>
-            <div class="card-body bg-s-white">
-              <p class="card-text text-s-gray">チーム名: <%= team.name %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-      <%= link_to "新規登録", new_team_path, class:"btn btn-primary" %>
-      <div class="m-3 d-flex justify-content-center">
-        <%== pagy_bootstrap_nav(@pagy) %>
-      </div>
-    <% end %>
 <div class="container mt-5">
   <div class="headline-large">TEAM</div>
   <div class="row my-4 p-2">
