@@ -34,7 +34,7 @@ RSpec.describe 'Divisions', type: :system do
       fill_in '部門名', with: 'これは作れる'
       fill_in '部門概要', with: '作れるんです'
       attach_file 'division[image]', 'db/fixtures/犬.jpg'
-      check 'member_tag_ids_1'
+      check 'division_tag_ids_1'
       click_button '登録する'
 
       expect(page).to have_content '登録しました。'
