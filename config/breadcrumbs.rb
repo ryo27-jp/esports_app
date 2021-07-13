@@ -28,6 +28,10 @@ crumb :member do |member|
   parent :division
 end
 
+crumb :search do |search|
+  link search.name
+  parent :root
+end
 # crumb :issue do |issue|
 #   link issue.title, issue_path(issue)
 #   parent :project_issues, issue.project

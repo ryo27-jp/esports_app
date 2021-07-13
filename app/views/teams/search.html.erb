@@ -1,0 +1,31 @@
+
+<div class="container mt-5">
+  <div>
+    <% breadcrumb :search, @search_form %>
+  </div>
+  <% if @search_form.choice == "team"%>
+    <div class="headline-large">TEAM: "<%= @search_form.name %>"の検索結果を表示中</div>
+  <% else%>
+    <div class="headline-large">MEMBER："<%= @search_form.name %>"の検索結果を表示中</div>
+  <% end %>
+  <div class="row my-4 p-2">
+    <% @result.each do |result| %>
+      <div class="col-12 col-md-4">
+        <%= link_to team_path(result), class:"card mb-4 text-decoration-none border-0 " do %>
+          <% if result.image.attached? %>
+              <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(result.image) %>')"></div>
+          <% else %>
+            <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
+          <% end %>
+          <div class="card-body bg-s-white">
+            <p class="card-text text-s-gray"><%= result.name %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to "新規登録", new_team_path, class:"btn btn-primary" %>
+    <div class="m-3 d-flex justify-content-center">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+</div>

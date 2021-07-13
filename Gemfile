@@ -41,6 +41,7 @@ gem 'pagy'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
   gem 'database_cleaner-active_record'
