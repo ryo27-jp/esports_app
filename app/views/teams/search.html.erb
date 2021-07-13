@@ -1,18 +1,24 @@
-<%= image_pack_tag 'mv_1.jpg', class:"d-block w-100", style: "height:30rem" %>
-<p>aaaa</p>
+
 <div class="container mt-5">
-  <div class="headline-large">TEAM</div>
+  <div>
+    <% breadcrumb :search, @search_form %>
+  </div>
+  <% if @search_form.choice == "team"%>
+    <div class="headline-large">TEAM: "<%= @search_form.name %>"の検索結果を表示中</div>
+  <% else%>
+    <div class="headline-large">MEMBER："<%= @search_form.name %>"の検索結果を表示中</div>
+  <% end %>
   <div class="row my-4 p-2">
-    <% @result.each do |team| %>
+    <% @result.each do |result| %>
       <div class="col-12 col-md-4">
-        <%= link_to team_path(team), class:"card mb-4 text-decoration-none border-0 " do %>
-          <% if team.image.attached? %>
-              <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(team.image) %>')"></div>
+        <%= link_to team_path(result), class:"card mb-4 text-decoration-none border-0 " do %>
+          <% if result.image.attached? %>
+              <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(result.image) %>')"></div>
           <% else %>
             <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
           <% end %>
           <div class="card-body bg-s-white">
-            <p class="card-text text-s-gray">チーム名: <%= team.name %></p>
+            <p class="card-text text-s-gray"><%= result.name %></p>
           </div>
         <% end %>
       </div>
