@@ -1,14 +1,4 @@
-$colors: (
-  'white':#fdfdfd,
-  'red': #B3241D,
-  'light-green': #44C7AA,
-  'snow-white': #f0f0f0,
-  'black': #000,
-  'gray': #777777,
-  'slate-gray': #615d5d,
-  'pale-gray': #eeeeee,
-  'blue-gray': #e4f4f3,
-);
+@import 'variables';
 
 // 文字色
 .text-s-gray {
