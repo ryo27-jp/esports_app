@@ -1,34 +1,38 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-sm-6 offset-sm-3 col-12">
+    <div class="col-sm-8 offset-sm-2 col-12">
       <div>
         <% breadcrumb :member, @member %>
       </div>
-      <% if @member.image.attached? %>
-        <%= image_tag @member.image, size:'640x420' %>
-      <% end %>
-      <div>
-        <%= Member.human_attribute_name(:name) %>
-        <%= @member.name%>
-      </div>
-      <div>
-        <%= Member.human_attribute_name(:biography) %>
-        <%= @member.biography%>
-      </div>
-      <div>
-        <%= Member.human_attribute_name(:url) %>
-        <%= @member.url %>
-      </div>
-      <div>
-        <span>タグ</span>
-        <% @member.tags.each do |tag| %>
-          <span class="badge rounded-pill bg-success"><%= tag.title %></span>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to "削除", member_path, method: :delete %>
-        <%= link_to "編集", edit_member_path %>
+      <div class="card mb-3 border-0">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <% if @member.image.attached? %>
+              <%= image_tag @member.image, class:"w-100 rounded-3"%>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="card-title">
+                <div>Name</div>
+                <div class="text-name"><%= @member.name%></div>
+              </div>
+              <div class="card-text">　
+                <%= link_to @member.url do %>
+                  <i class="fab fa-twitter fa-lg text-black"></i>
+                <% end %> 
+              </div>
+              <div class="card-text border-top pt-3 mt-3">
+                <div class="mb-2">
+                  <%= Member.human_attribute_name(:biography) %>
+                </div>
+                <%= @member.biography%>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
