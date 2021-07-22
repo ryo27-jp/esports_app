@@ -18,8 +18,10 @@
     <% end %>
     <%= render "shared/flash" %>
     <div class="py-5 bg-normal"></div>
-    <%= breadcrumbs separator: " &rsaquo; " %>
-    <%= yield %>
+    <div class="container m-5">
+      <%= breadcrumbs separator: " &rsaquo; " %>
+      <%= yield %>
+    </div>
     <%= render "shared/footer" %>
   </body>
 </html>

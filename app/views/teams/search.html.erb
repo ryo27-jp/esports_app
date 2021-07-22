@@ -1,5 +1,5 @@
 
-<div class="container mt-5">
+<div class="container">
   <div>
     <% breadcrumb :search, @search_form %>
   </div>
@@ -13,12 +13,12 @@
       <div class="col-12 col-md-4">
         <%= link_to team_path(result), class:"card mb-4 text-decoration-none border-0 " do %>
           <% if result.image.attached? %>
-              <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(result.image) %>')"></div>
+              <div class="card-img-top rounded-3 team-img rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(result.image) %>')"></div>
           <% else %>
-            <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
+            <%= image_pack_tag 'no_image.gif', class:"card-img-top rounded-3 team-img" %>
           <% end %>
-          <div class="card-body bg-s-white">
-            <p class="card-text text-s-gray"><%= result.name %></p>
+          <div class="card-body">
+            <p class="card-text"><%= result.name %></p>
           </div>
         <% end %>
       </div>
