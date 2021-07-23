@@ -12,7 +12,7 @@
     </div>
     <%= form_with model: @search_form, url: search_teams_path, method: :get, class:"d-flex" do |f| %>
       <%= f.select 'choice', [ ["チーム名","team"], ["メンバー名","member"]] %>
-      <%= f.text_field :name,class:"form-control" %>
+      <%= f.text_field :name,class:"form-control ms-1" %>
       <%= f.submit "検索" ,class:"btn btn-outline-success"%>
     <% end %>
   </div>
