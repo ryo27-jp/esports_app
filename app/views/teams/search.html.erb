@@ -11,14 +11,14 @@
   <div class="row my-4 p-2">
     <% @result.each do |result| %>
       <div class="col-12 col-md-4">
-        <%= link_to team_path(result), class:"card mb-4 text-decoration-none border-0 " do %>
+        <%= link_to team_path(result), class:"card mb-4 text-decoration-none border-0" do %>
           <% if result.image.attached? %>
-              <div class="card-img-top rounded-3 team-img rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(result.image) %>')"></div>
+              <div class="card-img-top rounded-3 team-img" style="background-image: url('<%=  rails_blob_path(result.image) %>')"></div>
           <% else %>
             <%= image_pack_tag 'no_image.gif', class:"card-img-top rounded-3 team-img" %>
           <% end %>
           <div class="card-body">
-            <p class="card-text"><%= result.name %></p>
+            <p class="card-text fw-bold fs-5"><%= result.name %></p>
           </div>
         <% end %>
       </div>
