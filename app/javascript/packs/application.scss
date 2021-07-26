@@ -10,3 +10,8 @@ html,body{
   color:black;
   background-color: map-get($colors, "white");
 }
+
+a{
+  text-decoration: none;
+  color:black;
+}

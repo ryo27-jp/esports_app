@@ -45,24 +45,32 @@
   color: black;
 }
 
+// メイン画像
 .bg-normal{
-  background-image: url('../images/mv_2.jpg');
   background-size: cover;
   width: 100%;
   height: 30rem;
   background-position: center center;
 }
 
-a{
-  text-decoration: none;
-  color:black;
-}
+// ページネーション
 
-.btn-outline-light-green {
-  color: map-get($colors, "light-green");
-  border: 1px solid map-get($colors, "light-green");
-  &:hover{
-    color: white;
-    background: map-get($colors, "light-green");
+.pagination{
+ li a{
+  color:map-get($colors, "black") !important;
+  border:none;
   }
+  li a:hover{
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: map-get($colors, "white");
+    }
+  .active a{
+    border-radius: 50%;
+    
+  }
+  .active .page-link{
+    background-color: #c5c5c5;
+  }
+
 }
