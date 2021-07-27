@@ -8,7 +8,7 @@
         <div class="row g-0">
           <div class="col-md-4">
             <% if @member.image.attached? %>
-              <%= image_tag @member.image, class:"w-100 h-100 rounded-3"%>
+              <div class="rounded-3 team-img h-100" style="background-image: url('<%=  rails_blob_path(@member.image) %>')"></div>
             <% end %>
           </div>
           <div class="col-md-8">
