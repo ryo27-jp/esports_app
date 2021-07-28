@@ -1,33 +1,45 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-sm-6 offset-sm-3 col-12">
+    <div class="col-sm-8 offset-sm-2 col-12">
       <div>
         <% breadcrumb :team, @team %>
       </div>
-      <% if @team.image.attached? %>
-        <%= image_tag @team.image,size:'640x420' %>
-      <% end %>
-      <div>
-        <%= Team.human_attribute_name(:name) %>
-        <%= @team.name%>
+      <div class="card mb-3 border-0">
+        <div class="row g-0">
+          <div class="col-md-5">
+            <% if @team.image.attached? %>
+              <div class="rounded-3 team-img h-100" style="background-image: url('<%=  rails_blob_path(@team.image) %>')"></div>
+            <% end %>
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <div class="card-title">
+                <div>Name</div>
+                <div class="text-name"><%= @team.name%></div>
+              </div>
+              <div class="card-text border-top pt-3 mt-3">
+                <div class="mb-2">
+                  <%= Team.human_attribute_name(:about) %>
+                </div>
+                <%= @team.about %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <%= Team.human_attribute_name(:about) %>
-        <%= @team.about%>
-      </div>
-      <p class="headline-large mt-4">Division</p>
+      <p class="headline-large mt-4">division</p>
       <div class="row mt-4">
         <% if @team.divisions.present? %>
           <% @team.divisions.each do |division| %>
-            <div class="col-12 col-md-4">
+            <div class="col-6 col-md-3">
               <%= link_to division_path(division), class:"card mb-4 text-decoration-none border-0 " do %>
                 <% if division.image.attached? %>
-                    <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(division.image) %>')"></div>
+                  <div class="rounded-circle team-img" style="background-image: url('<%=  rails_blob_path(division.image) %>')"></div>
                 <% else %>
-                  <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
+                  <div class="rounded-circle team-img" style="background-image: url('/images/no_image.gif')"></div>
                 <% end %>
-                <div class="card-body bg-s-white">
-                  <p class="card-text text-s-gray">チーム名: <%= division.name %></p>
+                <div class="card-body">
+                  <p class="card-text"><%= division.name %></p>
                 </div>
               <% end %>
             </div>
@@ -37,7 +49,7 @@
       <div>
         <%= link_to "削除", team_path, method: :delete %>
         <%= link_to "編集", edit_team_path %>
-        <%= link_to "部門新規登録", new_team_division_path(@team) %>
+        <%= link_to "メンバー新規登録", new_team_division_path(@team) %>
       </div>
     </div>
   </div>
