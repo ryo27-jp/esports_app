@@ -1,39 +1,50 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-sm-6 offset-sm-3 col-12">
+    <div class="col-sm-8 offset-sm-2 col-12">
       <div>
-        <% breadcrumb :team, @division %>
+        <% breadcrumb :division, @division %>
       </div>
-      <% if @division.image.attached? %>
-        <%= image_tag @division.image,size:'640x420' %>
-      <% end %>
-      <div>
-        <%= Division.human_attribute_name(:name) %>
-        <%= @division.name%>
-      </div>
-      <div>
-        <%= Division.human_attribute_name(:description) %>
-        <%= @division.description %>
-      </div>
-      <div>
-        <span>タグ</span>
-        <% @division.tags.each do |tag| %>
-          <span class="badge rounded-pill bg-success"><%= tag.title %></span>
-        <% end %>
+      <div class="card mb-3 border-0">
+        <div class="row g-0">
+          <div class="col-md-5">
+            <% if @division.image.attached? %>
+              <div class="rounded-3 team-img h-100" style="background-image: url('<%=  rails_blob_path(@division.image) %>')"></div>
+            <% end %>
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <div class="card-title">
+                <div>Name</div>
+                <div class="text-name"><%= @division.name%></div>
+              </div>
+              <div>
+                <% @division.tags.each do |tag| %>
+                  <span class="badge rounded-pill bg-success"><%= tag.title %></span>
+                <% end %>
+              </div>
+              <div class="card-text border-top pt-3 mt-3">
+                <div class="mb-2">
+                  <%= Division.human_attribute_name(:description) %>
+                </div>
+                <%= @division.description %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <p class="headline-large mt-4">MEMBER</p>
       <div class="row mt-4">
         <% if @division.members.present? %>
           <% @division.members.each do |member| %>
-            <div class="col-12 col-md-4">
+            <div class="col-6 col-md-3">
               <%= link_to member_path(member), class:"card mb-4 text-decoration-none border-0 " do %>
                 <% if member.image.attached? %>
-                    <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(member.image) %>')"></div>
+                  <div class="rounded-circle team-img" style="background-image: url('<%=  rails_blob_path(member.image) %>')"></div>
                 <% else %>
-                  <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
+                  <div class="rounded-circle team-img" style="background-image: url('/images/no_image.gif')"></div>
                 <% end %>
-                <div class="card-body bg-s-white">
-                  <p class="card-text text-s-gray"><%= member.name %></p>
+                <div class="card-body">
+                  <p class="card-text"><%= member.name %></p>
                 </div>
               <% end %>
             </div>
@@ -48,3 +59,4 @@
     </div>
   </div>
 </div>
+

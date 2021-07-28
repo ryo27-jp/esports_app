@@ -9,12 +9,12 @@
         <div class="col-12 col-md-4">
           <%= link_to team_path(team), class:"card mb-4 text-decoration-none border-0 " do %>
             <% if team.image.attached? %>
-               <div class="card-img-top rounded-0 team-img bg-s-white" style="background-image: url('<%=  rails_blob_path(team.image) %>')"></div>
+               <div class="card-img-top rounded-3 team-img" style="background-image: url('<%=  rails_blob_path(team.image) %>')"></div>
             <% else %>
-              <%= image_pack_tag 'no_image.gif', class:"card-img-top" %>
+              <div class="card-img-top rounded-3 team-img" style="background-image: url('images/no_image.gif')"></div>
             <% end %>
-            <div class="card-body bg-s-white">
-              <p class="card-text text-s-gray">チーム名: <%= team.name %></p>
+            <div class="card-body">
+              <p class="card-text fw-bold fs-5"><%= team.name %></p>
             </div>
           <% end %>
         </div>
