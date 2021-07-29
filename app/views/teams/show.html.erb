@@ -47,9 +47,11 @@
         <% end %>
       </div>
       <div>
-        <%= link_to "削除", team_path, method: :delete %>
-        <%= link_to "編集", edit_team_path %>
-        <%= link_to "メンバー新規登録", new_team_division_path(@team) %>
+        <% if current_user&.admin? %>
+          <%= link_to "削除", admin_team_path, method: :delete %>
+          <%= link_to "編集", edit_admin_team_path %>
+          <%= link_to "メンバー新規登録", new_team_division_path(@team) %>
+        <% end %>
       </div>
     </div>
   </div>
