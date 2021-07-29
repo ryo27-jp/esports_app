@@ -5,12 +5,14 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :divisions, except: [:index], shallow: true do
+    resources :divisions, only: [:show], shallow: true do
       resources :members, except: [:index], shallow: true
     end
   end
   namespace :admin do
-    resources :teams, only: %i[new edit create update destroy]
+    resources :teams, only: %i[new edit create update destroy] do 
+      resources :divisions, only: %i[new edit create update destroy]
+    end
   end
 
   resources :tags, except: [:show] do
