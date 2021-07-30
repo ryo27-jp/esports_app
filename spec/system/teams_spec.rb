@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Teams', type: :system do
+  let!(:user) { create(:user) }
+
   describe '作成できない' do
     before(:all) do
       @team = create(:team)
     end
 
     it 'チーム名がなければ登録できない' do
-      visit new_team_path
+      sign_in user
+      visit new_admin_team_path
       fill_in 'チーム名', with: ''
       fill_in 'チーム概要', with: '作れるんです'
       attach_file 'team[image]', 'db/fixtures/犬.jpg'
@@ -17,8 +20,9 @@ RSpec.describe 'Teams', type: :system do
     end
 
     it 'チーム名はユニークである事' do
+      sign_in user
       create(:team, name: 'testチーム')
-      visit new_team_path
+      visit new_admin_team_path
       fill_in 'チーム名', with: 'testチーム'
       fill_in 'チーム概要', with: '作れるんです'
       attach_file 'team[image]', 'db/fixtures/犬.jpg'
@@ -30,7 +34,8 @@ RSpec.describe 'Teams', type: :system do
 
   describe '作成出来る' do
     it 'teamが作成出来る事' do
-      visit new_team_path
+      sign_in user
+      visit new_admin_team_path
       fill_in 'チーム名', with: 'これは作れる'
       fill_in 'チーム概要', with: '作れるんです'
       attach_file 'team[image]', 'db/fixtures/犬.jpg'

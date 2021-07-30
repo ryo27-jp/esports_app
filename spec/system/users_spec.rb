@@ -2,12 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
   describe 'ログイン' do
-    before(:all) do
-      @user = create(:user)
-    end
+    let!(:user) { create(:user) }
 
     it 'ログインできる' do
       visit new_user_session_path
+      binding.pry
       fill_in 'Eメール', with: 'test1@example.com'
       fill_in 'パスワード', with: 'password'
       click_button 'ログイン'
