@@ -52,10 +52,11 @@
         <% end %>
       </div>
       <div>
-        <% binding.pry%>
-        <%= link_to "部門削除", admin_team_division_path(@division), method: :delete %>
-        <%= link_to "部門編集", edit_admin_team_division_path(@division.team) %>
-        <%= link_to "メンバー新規登録", new_division_member_path(@division) %>
+        <% if current_user&.admin? %>
+          <%= link_to "部門削除", admin_division_path(@division), method: :delete %>
+          <%= link_to "部門編集", edit_admin_division_path(@division) %>
+          <%= link_to "メンバー新規登録", new_admin_division_member_path(@division) %>
+        <% end %>
       </div>
     </div>
   </div>
