@@ -8,6 +8,7 @@ RSpec.describe 'Divisions', type: :system do
     let!(:division) { create(:division) }
 
     it '部門名がなければ登録できない' do
+      sign_in user
       visit new_admin_team_division_path(team)
       fill_in '部門名', with: ''
       fill_in '部門概要', with: '作れないです'
@@ -18,6 +19,7 @@ RSpec.describe 'Divisions', type: :system do
     end
 
     it '部門名はユニークである事' do
+      sign_in user
       visit new_admin_team_division_path(team)
       fill_in '部門名', with: 'test部門'
       fill_in '部門概要', with: '作れないです'
@@ -31,6 +33,7 @@ RSpec.describe 'Divisions', type: :system do
   describe '作成出来る' do
     let!(:tag) { create(:tag) }
     it 'divisionが作成出来る事' do
+      sign_in user
       visit new_admin_team_division_path(team)
       fill_in '部門名', with: 'これは作れる'
       fill_in '部門概要', with: '作れるんです'

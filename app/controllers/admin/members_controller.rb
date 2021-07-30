@@ -1,4 +1,5 @@
 class Admin::MembersController < MembersController
+  before_action :user_admin?
   def new
     @division = Division.find(params[:division_id])
     @member = Member.new
@@ -42,5 +43,9 @@ class Admin::MembersController < MembersController
 
   def member_params
     params.require(:member).permit(:name, :url, :biography, :image, tag_ids: [])
+  end
+
+  def user_admin?
+    redirect_to root_path unless current_user&.admin?
   end
 end

@@ -1,6 +1,6 @@
 class Admin::TeamsController < TeamsController
   include Pagy::Backend
-  before_action :user_admin
+  before_action :user_admin?
 
   def new
     @team = Team.new
@@ -45,7 +45,7 @@ class Admin::TeamsController < TeamsController
     params.require(:team).permit(:name, :about, :image)
   end
 
-  def user_admin
+  def user_admin?
     redirect_to root_path unless current_user&.admin?
   end
 end

@@ -8,6 +8,7 @@ RSpec.describe 'members', type: :system do
     let!(:member) { create(:member) }
 
     it '名前がなければ登録できない' do
+      sign_in user
       visit new_admin_division_member_path(division)
       fill_in '名前', with: ''
       fill_in 'SNS', with: '作れないです'
@@ -19,6 +20,7 @@ RSpec.describe 'members', type: :system do
     end
 
     it '名前はユニークである事' do
+      sign_in user
       visit new_admin_division_member_path(division)
       fill_in '名前', with: 'テスト名前'
       fill_in 'SNS', with: '作れないです'
@@ -33,6 +35,7 @@ RSpec.describe 'members', type: :system do
   describe '作成出来る' do
     let!(:tag) { create(:tag) }
     it 'memberが作成出来る事' do
+      sign_in user
       visit new_admin_division_member_path(division)
       fill_in '名前', with: 'これは作れる'
       fill_in 'SNS', with: '作れないです'
