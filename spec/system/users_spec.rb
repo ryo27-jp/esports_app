@@ -6,7 +6,6 @@ RSpec.describe 'Users', type: :system do
 
     it 'ログインできる' do
       visit new_user_session_path
-      binding.pry
       fill_in 'Eメール', with: 'test1@example.com'
       fill_in 'パスワード', with: 'password'
       click_button 'ログイン'
