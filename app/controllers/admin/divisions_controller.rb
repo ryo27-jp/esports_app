@@ -18,7 +18,6 @@ class Admin::DivisionsController < DivisionsController
   end
 
   def edit
-    @team = Team.find(params[:team_id])
     @division = Division.find(params[:id])
   end
 
