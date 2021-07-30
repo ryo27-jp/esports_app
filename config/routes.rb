@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :admin do
-    resources :teams, only: %i[new edit create update destroy] do 
+    resources :teams, only: %i[new edit create update destroy] do
       resources :divisions, only: %i[new edit create update destroy], shallow: true do
         resources :members, only: %i[new edit create update destroy], shallow: true
       end

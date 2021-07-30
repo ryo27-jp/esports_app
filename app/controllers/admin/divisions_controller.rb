@@ -1,5 +1,4 @@
 class Admin::DivisionsController < DivisionsController
-
   def new
     @team = Team.find(params[:team_id])
     @division = Division.new
