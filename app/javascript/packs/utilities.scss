@@ -72,5 +72,9 @@
   .active .page-link{
     background-color: #c5c5c5;
   }
+  .page-link:focus{
+    background-color:none;
+    box-shadow: none;
+  }
 
 }

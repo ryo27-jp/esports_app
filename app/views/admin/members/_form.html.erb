@@ -1,7 +1,7 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-sm-6 offset-sm-3 col-12">
-      <%= form_with model: [division, member], local: true do |f| %>
+      <%= form_with model: [:admin, division, member], local: true do |f| %>
         <%= render 'shared/error_messages', object: member %>
           <div>
             <%= f.label :name %>

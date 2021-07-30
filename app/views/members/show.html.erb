@@ -18,9 +18,11 @@
                 <div class="text-name"><%= @member.name%></div>
               </div>
               <div class="card-text">　
-                <%= link_to @member.url do %>
-                  <i class="fab fa-twitter fa-lg text-black"></i>
-                <% end %> 
+                <% if @member.url.present?%>
+                  <%= link_to @member.url do %>
+                    <i class="fab fa-twitter fa-lg text-black"></i>
+                  <% end %>
+                <% end %>
               </div>
               <div class="card-text border-top pt-3 mt-3">
                 <div class="mb-2">
@@ -32,6 +34,10 @@
           </div>
         </div>
       </div>
+      <% if current_user&.admin? %>
+        <%= link_to "メンバー編集" , edit_admin_member_path(@member) %>
+        <%= link_to "メンバー削除" , admin_member_path(@member), method: :delete %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -19,7 +19,9 @@
           <% end %>
         </div>
       <% end %>
-      <%= link_to "新規登録", new_team_path, class:"btn btn-primary" %>
+      <% if current_user&.admin? %>
+        <%= link_to "新規登録", new_admin_team_path, class:"btn btn-primary" %>
+      <% end %>
       <div class="m-3 d-flex justify-content-center">
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
