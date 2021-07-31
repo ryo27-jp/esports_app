@@ -1,0 +1,29 @@
+<h3 class="headline-large mt-4"><%= @tag.title %></h3>
+<div class="container my-5">
+  <div class="col-sm-8 offset-sm-2 col-12">
+    <p class="headline-large mt-4">division</p>
+    <div class="row mt-4">
+      <% if @tag.divisions.present? %>
+        <% @tag.divisions.each do |division| %>
+          <div class="col-6 col-md-3">
+            <%= link_to division_path(division), class:"card mb-4 text-decoration-none border-0 " do %>
+              <% render partial: "shared/divisions", locals: {division: division} %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <p class="headline-large mt-4">MEMBER</p>
+    <div class="row mt-4">
+      <% if @tag.members.present? %>
+        <% @tag.members.each do |member| %>
+          <div class="col-6 col-md-3">
+            <%= link_to member_path(member), class:"card mb-4 text-decoration-none border-0 " do %>
+              <% render partial: "shared/members", locals:{member: member}%>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

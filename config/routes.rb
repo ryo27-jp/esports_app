@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tags, except: [:show] do
+  resources :tags do
     collection do
       get 'search'
     end
