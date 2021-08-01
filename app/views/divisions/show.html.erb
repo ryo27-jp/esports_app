@@ -19,7 +19,7 @@
               </div>
               <div>
                 <% @division.tags.each do |tag| %>
-                  <span class="badge rounded-pill bg-success"><%= tag.title %></span>
+                  <%= link_to tag.title, tag_path(tag), class:"badge rounded-pill bg-success" %>
                 <% end %>
               </div>
               <div class="card-text border-top pt-3 mt-3">
@@ -38,14 +38,7 @@
           <% @division.members.each do |member| %>
             <div class="col-6 col-md-3">
               <%= link_to member_path(member), class:"card mb-4 text-decoration-none border-0 " do %>
-                <% if member.image.attached? %>
-                  <div class="rounded-circle team-img" style="background-image: url('<%=  rails_blob_path(member.image) %>')"></div>
-                <% else %>
-                  <div class="rounded-circle team-img" style="background-image: url('/images/no_image.gif')"></div>
-                <% end %>
-                <div class="card-body">
-                  <p class="card-text"><%= member.name %></p>
-                </div>
+                <% render partial: "shared/members", locals:{member: member}%>
               <% end %>
             </div>
           <% end %>

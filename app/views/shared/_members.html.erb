@@ -1,0 +1,8 @@
+<% if member.image.attached? %>
+  <div class="rounded-circle team-img" style="background-image: url('<%=  rails_blob_path(member.image) %>')"></div>
+<% else %>
+  <div class="rounded-circle team-img" style="background-image: url('/images/no_image.gif')"></div>
+<% end %>
+<div class="card-body">
+  <p class="card-text"><%= member.name %></p>
+</div>
