@@ -15,9 +15,10 @@ Rails.application.routes.draw do
         resources :members, only: %i[new edit create update destroy], shallow: true
       end
     end
+    resources :tags, only: %i[new edit create update destroy]
   end
 
-  resources :tags do
+  resources :tags, only: %i[index show] do
     collection do
       get 'search'
     end
