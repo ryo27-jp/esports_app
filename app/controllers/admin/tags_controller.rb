@@ -1,6 +1,6 @@
 class Admin::TagsController < ApplicationController
   before_action :user_admin?
-  
+
   def new
     @tag = Tag.new
   end
@@ -47,5 +47,4 @@ class Admin::TagsController < ApplicationController
   def user_admin?
     redirect_to root_path unless current_user&.admin?
   end
-
 end
