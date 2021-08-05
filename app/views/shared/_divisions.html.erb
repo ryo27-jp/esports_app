@@ -1,0 +1,8 @@
+<% if division.image.attached? %>
+  <div class="rounded-circle team-img" style="background-image: url('<%=  rails_blob_path(division.image) %>')"></div>
+<% else %>
+  <div class="rounded-circle team-img" style="background-image: url('/images/no_image.gif')"></div>
+<% end %>
+<div class="card-body">
+  <p class="card-text"><%= division.name %></p>
+</div>
