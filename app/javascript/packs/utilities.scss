@@ -1,0 +1,80 @@
+@import 'variables';
+
+// 文字色
+.text-s-gray {
+  color: map-get($colors, "slate-gray") !important;
+}
+.text-b-gray{
+  color: map-get($colors, "blue-gray") !important;
+}
+.text-black{
+  color: map-get($colors, "black") !important;
+}
+
+// 背景色
+.bg-s-gray {
+  background-color: map-get($colors, "slate-gray");
+}
+.bg-s-white {
+  background-color: map-get($colors, "snow-white");
+}
+.bg-white {
+  background-color: map-get($colors, "white");
+}
+
+// 画像サイズ
+.team-img{
+  width: 100%;
+  padding-top: 80%;
+  background-position: center center;
+  background-size: cover;
+}
+
+// 見出し
+.headline-large {
+  letter-spacing: 0.1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.text-name{
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.card-text{
+  color: black;
+}
+
+// メイン画像
+.bg-normal{
+  background-size: cover;
+  width: 100%;
+  height: 30rem;
+  background-position: center center;
+}
+
+// ページネーション
+
+.pagination{
+ li a{
+  color:map-get($colors, "black") !important;
+  border:none;
+  }
+  li a:hover{
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: map-get($colors, "white");
+    }
+  .active a{
+    border-radius: 50%;
+    
+  }
+  .active .page-link{
+    background-color: #c5c5c5;
+  }
+  .page-link:focus{
+    background-color:none;
+    box-shadow: none;
+  }
+
+}

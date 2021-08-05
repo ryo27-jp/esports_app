@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :set_search
 
   class Forbidden < ActionController::ActionControllerError; end
+
   class IpAddressRejected < ActionController::ActionControllerError; end
-  
+
   include ErrorHandlers if Rails.env.production?
 
   private
@@ -12,5 +13,4 @@ class ApplicationController < ActionController::Base
   def set_search
     @search_form = SearchForm.new
   end
-
 end
